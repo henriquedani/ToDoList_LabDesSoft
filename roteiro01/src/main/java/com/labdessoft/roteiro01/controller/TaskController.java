@@ -40,6 +40,7 @@ public class TaskController {
     @GetMapping()
     @Operation(summary = "Lista todas as tarefas da lista de tarefas")
     public ResponseEntity<List<Task>> listAll() {
+        
         try {
             List<Task> taskList = new ArrayList<Task>();
             taskService.findAll().forEach(taskList::add);
