@@ -30,13 +30,9 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    @Operation(summary = "Cria uma nova tarefa do tipo LIVRE, recebendo os dados do DTOCreateTask")
-    public Task create(DTOCreateTask taskDto) {
-        if (taskDto.getDescription() == null || taskDto.getDescription().isEmpty()) {
-            throw new IllegalArgumentException("A descrição da tarefa é obrigatória");
-        }
-
-        Task novaTask = new Task(taskDto.getDescription(), TaskTypeEnum.LIVRE, taskDto.getPriority());
+    @Operation(summary = "Cria uma nova tarefa do tipo LIVRE, passando somente a descrição inserida da tarefa")
+    public Task create(String descricao) {
+        Task novaTask = new Task(descricao);
         return taskRepository.save(novaTask);
     }
 

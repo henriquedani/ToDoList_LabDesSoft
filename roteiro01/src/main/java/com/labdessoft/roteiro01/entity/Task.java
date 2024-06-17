@@ -40,7 +40,7 @@ public class Task {
     private Integer plannedDays;
     private LocalDate lastModifiedPrazoDate;
 
-    //Construtor inicial da primeira entrega
+    //Construtor para criar Tarefa do Tipo LIVRE passando apenas a descrição
     public Task(String description) {
         this.description = description;
         this.completed = false;
@@ -48,7 +48,7 @@ public class Task {
         this.priority = TaskPriorityEnum.AUSENTE;
     }
 
-    //Construtor inicial estendido para criar uma Tarefa do Tipo LIVRE
+    //Construtor para criar uma Tarefa passando a descrição, o tipo e a prioridade
     public Task(String description, TaskTypeEnum type, TaskPriorityEnum priority) {
         this.description = description;
         this.completed = false;

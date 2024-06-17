@@ -18,10 +18,4 @@ public class DTOCreateTask {
     @Size(min = 10, message = "A descrição da tarefa deve possuir pelo menos 10 caracteres")
     private String description;
 
-    @NotNull(message = "O tipo da tarefa é obrigatório, ou seja, não pode ser nulo")
-    private TaskTypeEnum type;
-
-    @NotNull(message = "A prioridade da tarefa é obrigatória, ou seja, não pode ser nula")
-    private TaskPriorityEnum priority;
-
 }

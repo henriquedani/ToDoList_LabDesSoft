@@ -57,7 +57,7 @@ public class TaskController {
     @Operation(summary = "Cria uma nova tarefa do Tipo Livre")
     public ResponseEntity<Task> create(@RequestBody DTOCreateTask taskDto) {
         try {
-            Task taskCriada = taskService.create(taskDto);
+            Task taskCriada = taskService.create(taskDto.getDescription());
             return new ResponseEntity<>(taskCriada, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
