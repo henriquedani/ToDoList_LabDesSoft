@@ -45,6 +45,7 @@ public class Task {
         this.description = description;
         this.completed = false;
         this.type = TaskTypeEnum.LIVRE;
+        this.priority = TaskPriorityEnum.AUSENTE;
     }
 
     //Construtor inicial estendido para criar uma Tarefa do Tipo LIVRE
@@ -81,27 +82,16 @@ public class Task {
     public String toString() {
         String status = calculateStatus();
         return String.format("Task [id=%d, description=%s, priority=%s, type=%s, status=%s]",
-                id, description, priority, getTypeDescription(type), status);
-    }
-    
-    private String getTypeDescription(TaskTypeEnum type) {
-        switch (type) {
-            case DATA:
-                return "Data";
-            case PRAZO:
-                return "Prazo";
-            default:
-                return "Livre";
-        }
+                this.id, this.description, this.priority, type.getDescricao(), status);
     }
     
     private String calculateStatus() {
-        if (completed) {
+        if (this.completed) {
             return "Concluída";
         }
         LocalDate currentDate = LocalDate.now();
         long daysLate;
-        switch (type) {
+        switch (this.type) {
             case DATA:
                 if (plannedDate != null) {
                     daysLate = ChronoUnit.DAYS.between(plannedDate, currentDate);
