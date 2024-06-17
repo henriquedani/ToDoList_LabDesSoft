@@ -4,6 +4,7 @@ export const TodoForm = ({ addTodo }) => {
     const [value, setValue] = useState('');
 
     const handleSubmit = (e) => {
+
         e.preventDefault();
         if (value) {
             // adicionar tarefa

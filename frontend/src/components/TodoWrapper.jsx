@@ -9,10 +9,12 @@ export const TodoWrapper = () => {
     ]);
     
     const addTodo = (todo) => {
+        console.log('ops', todo)
         setTodos([
             ...todos,
-            { id: uuidv4(), task : description , completed: false },
+            { id: uuidv4(), description : todo , completed: false },
         ]);
+        console.log(todos)
     }
     return (
         <div className='TodoWrapper'>
