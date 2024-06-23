@@ -2,12 +2,15 @@
 title Diagrama de Sequência referente ao UC-02 : Listar Tarefas
 
 actor User
+participant Frontend
 participant TaskController
 participant TaskService
 participant TaskRepository
 participant Database
 
-User -> TaskController: GET /task
+User -> Frontend: Listar todas as tarefas
+activate Frontend
+Frontend -> TaskController: GET /task
 activate TaskController
 TaskController -> TaskService: findAll()
 activate TaskService
@@ -25,7 +28,9 @@ else else
     deactivate TaskRepository
     TaskService --> TaskController: List<Task>
     deactivate TaskService
-    TaskController -> User: List<Task> (HTTP 200 OK)
+    TaskController -> Frontend: List<Task> (HTTP 200 OK)
     deactivate TaskController
+    Frontend -> User: Lista de tarefas
+    deactivate Frontend
 end
 @enduml

@@ -2,13 +2,16 @@
 title Diagrama de Sequência referente ao UC-04 : Marcar Tarefa como concluida
 
 actor User
+participant Frontend
 participant TaskController
 participant TaskService
 participant TaskRepository
 participant Task
 participant Database
 
-User -> TaskController: PATCH /task/{id}
+User -> Frontend: Marcar uma tarefa como concluida (id)
+activate Frontend
+Frontend -> TaskController: PATCH /task/{id}
 activate TaskController
 TaskController -> TaskService: marcarTarefaComoConcluida(id)
 activate TaskService
@@ -34,7 +37,9 @@ else else
     deactivate TaskRepository
     TaskService --> TaskController: Task
     deactivate TaskService
-    TaskController -> User: Task (HTTP 200 OK)
+    TaskController -> Frontend: Task (HTTP 200 OK)
     deactivate TaskController
+    Frontend -> User: Tarefa marcada como concluída
+    deactivate Frontend
 end
 @enduml

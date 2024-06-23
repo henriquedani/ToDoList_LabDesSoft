@@ -2,12 +2,15 @@
 title Diagrama de Sequência referente ao UC-03 : Excluir Tarefa
 
 actor User
+participant Frontend
 participant TaskController
 participant TaskService
 participant TaskRepository
 participant Database
 
-User -> TaskController: DELETE /task/{id}
+User -> Frontend: Excluir uma tarefa (id)
+activate Frontend
+Frontend -> TaskController: DELETE /task/{id}
 activate TaskController
 TaskController -> TaskService: delete(id)
 activate TaskService
@@ -21,6 +24,8 @@ TaskRepository --> TaskService: void
 deactivate TaskRepository
 TaskService --> TaskController: HTTP 204 NO CONTENT
 deactivate TaskService
-TaskController -> User: HTTP 204 NO CONTENT
+TaskController -> Frontend: HTTP 204 NO CONTENT
 deactivate TaskController
+Frontend -> User: Confirmação de tarefa excluída
+deactivate Frontend
 @enduml

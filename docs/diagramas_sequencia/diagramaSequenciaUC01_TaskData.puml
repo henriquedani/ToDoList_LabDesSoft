@@ -2,13 +2,16 @@
 title Diagrama de Sequência referente ao UC-01 : Criar Tarefa (Tipo Data)
 
 actor User
+participant Frontend
 participant TaskController
 participant TaskService
 participant TaskRepository
 participant Task
 participant Database
 
-User -> TaskController: POST /task/create/data
+User -> Frontend: Criar tarefa do tipo Data
+activate Frontend
+Frontend -> TaskController: POST /task/create/data
 activate TaskController
 TaskController -> TaskService: createDataTask(DTOCreateDataTask)
 activate TaskService
@@ -30,7 +33,9 @@ else else
     deactivate TaskRepository
     TaskService --> TaskController: Task
     deactivate TaskService
-    TaskController -> User: Task (HTTP 201 CREATED)
+    TaskController -> Frontend: Task (HTTP 201 CREATED)
     deactivate TaskController
+    Frontend -> User: Tarefa criada do tipo Data
+    deactivate Frontend
 end
 @enduml
