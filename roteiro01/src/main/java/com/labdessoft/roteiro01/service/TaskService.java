@@ -12,14 +12,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import io.swagger.v3.oas.annotations.Operation;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TaskService {

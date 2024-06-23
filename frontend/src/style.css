@@ -8,7 +8,7 @@
 
 body {
     background: transparent;
-    background-color: black;
+    background-color: #FAFAFA;
     /* Make it white if you need */
     display: flex;
     justify-content: center;
@@ -21,9 +21,12 @@ body {
 }
 
 h1 {
-    color: #fff;
-    margin-bottom: 0.5rem;
-    font-size: 1.75rem;
+    text-align: center;
+    margin-top: 15px;
+    background-color: black;
+    color: white;
+    padding: 7px;
+    border-radius: 4px;
 }
 
 .TodoWrapper {
@@ -37,20 +40,18 @@ h1 {
     margin-bottom: 1rem;
 }
 
-.todo-input {
+.input-form input {
     outline: none;
     background: none;
-    border: 1px solid #8758ff;
+    border: 1px solid black;
     padding: 0.5rem 1rem;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
     width: 300px;
-    color: #fff;
+    color: black;
+    margin-left: 10px;
 }
 
-.todo-input::placeholder {
-    color: #ffffff4d;
-}
 
 .todo-btn {
     background: #8758ff;
@@ -60,20 +61,19 @@ h1 {
     cursor: pointer;
 }
 
-.TodoList {
+.tasksList {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    background: #8758ff;
-    color: #fff;
-    padding: 0.75rem 1rem;
+    color: black;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
     margin-bottom: 1rem;
+    border: 2px solid black;
+    width: 100%;
 }
 
-.fa-trash {
-    margin-left: 0.75rem;
-}
+
 
 .incompleted {
     color: #fff;
@@ -89,4 +89,87 @@ h1 {
 
 .delete-icon {
     cursor: pointer;
+}
+
+.btn-typeTask {
+    background-color: black;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-right: 4px;
+    margin-bottom: 10px;
+}
+
+.input-form {
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.button-criar-tarefa {
+    background-color: black;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.input-form select {
+    outline: none;
+    background: none;
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 120px;
+    color: black;
+    margin-left: 10px;
+}
+
+.tasksList ul {
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.tasksList li {
+    margin-top: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    padding: 7px;
+}
+
+.tasksList h2 {
+    text-align: center;
+}
+
+.fa-trash {
+    color: red;
+    cursor: pointer;
+}
+
+.btn-excluir {
+    margin-left: 10px;
+    width: 5%;
+    background-color: black;
+    border: transparent;  
+}
+
+.TodoForm h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.TodoForm h4 {
+    margin-bottom: 5px;
 }

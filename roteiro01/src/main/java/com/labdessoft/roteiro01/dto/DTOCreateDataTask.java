@@ -4,10 +4,10 @@ import java.time.LocalDate;
 
 import com.labdessoft.roteiro01.entity.TaskPriorityEnum;
 
-import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,32 +1,38 @@
-import React, { useState } from 'react';
-import { TodoForm } from './TodoForm';
-import { TodoList } from './TodoList';
-import { v4 as uuidv4 } from "uuid";
+import React, { useState, useEffect }  from "react";
+import TodoForm from "./TodoForm";
+import { TodoList } from "./TodoList";
 
-export const TodoWrapper = () => {
-    const [todos, setTodos] = useState([
-        { id: 1, description: 'Tarefa exemplo', completed: false }
-    ]);
-    
-    const addTodo = (todo) => {
-        console.log('ops', todo)
-        setTodos([
-            ...todos,
-            { id: uuidv4(), description : todo , completed: false },
-        ]);
-        console.log(todos)
+function TodoWrapper() {
+  const [tarefas, setTarefas] = useState([]);
+
+  useEffect(() => {
+    listarTarefas();
+  }, []);
+
+  const listarTarefas = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/task");
+      if (response.ok) {
+        const data = await response.json();
+        setTarefas(data);
+      } else {
+        console.error("Erro ao buscar as tarefas:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Erro ao buscar as tarefas:", error);
     }
-    return (
-        <div className='TodoWrapper'>
-            <h1>Lista de Tarefas</h1>
-            <TodoForm addTodo={addTodo} />
-            {todos.map((item) =>
-                <TodoList
-                    key={item.id}
-                    task={item}
-                />
-            )
-            }
-        </div>
-    );
+  };
+
+  const addTarefa = (novaTarefa) => {
+    setTarefas([...tarefas, novaTarefa]);
+  };
+
+  return (
+    <div className="app-container">
+      <TodoForm addTarefa={addTarefa} />
+      <TodoList tarefas={tarefas} setTarefas={setTarefas} />
+    </div>
+  );
 }
+
+export default TodoWrapper;
